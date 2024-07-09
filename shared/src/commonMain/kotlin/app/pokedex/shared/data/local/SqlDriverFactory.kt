@@ -4,7 +4,7 @@ import app.cash.sqldelight.db.SqlDriver
 import app.pokedex.shared.database.PokedexDatabase
 import org.koin.core.scope.Scope
 
-internal expect fun Scope.sqlDriverFactory(): SqlDriver
+internal expect fun Scope.createSqlDriver(): SqlDriver
 
 internal val PokedexDatabase.Companion.name: String
     inline get() = "pokedex.db"

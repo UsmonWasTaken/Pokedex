@@ -44,6 +44,7 @@ kotlin {
 
                 api(libs.ktor.client.core)
                 api(libs.ktor.client.contentNegotiation)
+                api(libs.ktor.client.resources)
                 api(libs.ktor.client.logging)
                 api(libs.ktor.serialization.json)
 
@@ -68,6 +69,7 @@ kotlin {
 
             compilerOptions {
                 freeCompilerArgs.add("-Xexpect-actual-classes")
+                freeCompilerArgs.add("-opt-in=kotlin.contracts.ExperimentalContracts")
                 freeCompilerArgs.add("-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
                 freeCompilerArgs.add("-opt-in=androidx.compose.material3.ExperimentalMaterial3Api")
             }

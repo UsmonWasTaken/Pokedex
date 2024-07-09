@@ -6,7 +6,7 @@ import app.pokedex.shared.database.PokedexDatabase
 import org.koin.core.scope.Scope
 import java.io.File
 
-internal actual fun Scope.sqlDriverFactory(): SqlDriver {
+internal actual fun Scope.createSqlDriver(): SqlDriver {
     val databasePath = File(System.getProperty("java.io.tmpdir"), PokedexDatabase.name).path
     return JdbcSqliteDriver(
         url = "jdbc:sqlite:$databasePath",

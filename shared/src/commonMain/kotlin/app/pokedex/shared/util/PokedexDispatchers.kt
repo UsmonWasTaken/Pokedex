@@ -10,7 +10,7 @@ interface PokedexDispatchers {
     val unconfined: CoroutineDispatcher
 }
 
-internal fun pokedexDispatchers(): PokedexDispatchers = object : PokedexDispatchers {
+internal fun PokedexDispatchers(): PokedexDispatchers = object : PokedexDispatchers {
     override val main: CoroutineDispatcher = Dispatchers.Main
     override val default: CoroutineDispatcher = Dispatchers.Default
     override val io: CoroutineDispatcher = Dispatchers.IO
