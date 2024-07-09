@@ -9,6 +9,8 @@ fun initKoin(
 ) {
     startKoin {
         declaration?.invoke(this)
-        modules()
+        modules(
+            coroutineDispatcherModule,
+        )
     }
 }

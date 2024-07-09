@@ -67,6 +67,7 @@ kotlin {
             }
 
             compilerOptions {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
                 freeCompilerArgs.add("-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
                 freeCompilerArgs.add("-opt-in=androidx.compose.material3.ExperimentalMaterial3Api")
             }
