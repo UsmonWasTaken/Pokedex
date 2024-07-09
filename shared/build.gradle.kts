@@ -1,6 +1,3 @@
-@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
-
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -41,7 +38,6 @@ kotlin {
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
-                api(compose.material)
                 api(compose.material3)
                 api(compose.materialIconsExtended)
                 api(compose.components.resources)
@@ -68,6 +64,11 @@ kotlin {
                 api(libs.decompose.extensions.compose)
                 api(libs.essenty.lifecycle)
                 api(libs.qdsfdhvh.imageLoader)
+            }
+
+            compilerOptions {
+                freeCompilerArgs.add("-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
+                freeCompilerArgs.add("-opt-in=androidx.compose.material3.ExperimentalMaterial3Api")
             }
         }
 

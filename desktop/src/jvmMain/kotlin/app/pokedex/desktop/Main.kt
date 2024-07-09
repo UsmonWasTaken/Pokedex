@@ -16,7 +16,7 @@ import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import org.jetbrains.compose.resources.stringResource
 import javax.swing.SwingUtilities
 
-fun main() {
+fun main(args: Array<String>) {
     initKoin(debuggable = true)
 
     val rootComponent = invokeOnAwtSync {

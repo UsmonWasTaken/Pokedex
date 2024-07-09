@@ -1,28 +1,33 @@
 package app.pokedex.shared
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import app.pokedex.shared.RootComponent.Child
+import app.pokedex.shared.comingsoon.ComingSoonScreen
+import app.pokedex.shared.details.DetailsScreen
+import app.pokedex.shared.favorite.FavoriteScreen
+import app.pokedex.shared.main.MainScreen
+import app.pokedex.shared.pokedex.PokedexScreen
+import com.arkivanov.decompose.extensions.compose.stack.Children
+import com.arkivanov.decompose.extensions.compose.stack.animation.slide
+import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 
 @Composable
 fun ContentView(component: RootComponent) {
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        containerColor = MaterialTheme.colorScheme.background,
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = "Hi, Mom!",
-                color = MaterialTheme.colorScheme.onBackground,
+    Children(
+        stack = component.childStack,
+        animation = stackAnimation(
+            animator = slide(
+                animationSpec = tween(durationMillis = 200)
             )
+        ),
+    ) {
+        when (val child = it.instance) {
+            is Child.Main -> MainScreen(child.component)
+            is Child.Pokedex -> PokedexScreen(child.component)
+            is Child.Favorite -> FavoriteScreen(child.component)
+            is Child.Details -> DetailsScreen(child.component)
+            is Child.ComingSoon -> ComingSoonScreen(child.component)
         }
     }
 }
