@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Pokedex.Splash" parent="Theme.SplashScreen">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+    </style>
+
+    <style name="Theme.Pokedex.Splash" parent="Base.Theme.Pokedex.Splash">
+        <item name="postSplashScreenTheme">@style/Theme.Pokedex</item>
+    </style>
+
+    <style name="Base.Theme.Pokedex" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+    </style>
+
+    <style name="Theme.Pokedex" parent="Base.Theme.Pokedex" />
+</resources>
