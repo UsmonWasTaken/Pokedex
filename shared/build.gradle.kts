@@ -105,7 +105,7 @@ android {
 
 sqldelight {
     databases {
-        create("PokemonDatabase") {
+        create("PokedexDatabase") {
             packageName.set("app.pokedex.shared.database")
         }
     }
