@@ -10,7 +10,7 @@
         <item name="postSplashScreenTheme">@style/Theme.Pokedex</item>
     </style>
 
-    <style name="Base.Theme.Pokedex" parent="android:style/Theme.Material.Light.NoActionBar">
+    <style name="Base.Theme.Pokedex" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
     </style>
