@@ -5,12 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class PokemonInfoResponse(
-    val id: Long,
+    val id: Int,
     val name: String,
-    val height: Long,
-    val weight: Long,
+    val height: Int,
+    val weight: Int,
     @SerialName("base_experience")
-    val baseExperience: Long,
+    val baseExperience: Int,
     val types: List<TypeResponse>,
     val stats: List<StatsResponse>,
 ) {

@@ -13,17 +13,17 @@ upsertPokemon:
 INSERT OR REPLACE INTO pokemonInfoEntity(id, name, height, weight, experience, types, stats, isFavorite)
 VALUES ?;
 
-updateIsFavoriteByName:
+updateIsFavorite:
 UPDATE pokemonInfoEntity
 SET isFavorite = :isFavorite
-WHERE name = :name;
+WHERE id = :id;
 
 getFavoritePokemons:
 SELECT *
 FROM pokemonInfoEntity
-WHERE isFavorite != 0;
+WHERE isFavorite == 1;
 
-getPokemonByName:
+getPokemon:
 SELECT *
 FROM pokemonInfoEntity
-WHERE name = :name;
+WHERE id = :id;

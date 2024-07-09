@@ -21,8 +21,8 @@ internal class PokemonDao(
         }
     }
 
-    fun getPokemonsByPage(page: Long): Flow<List<PokemonEntity>> {
-        return queries.getPokemonsByPage(page)
+    fun getPokemonsByPage(page: Int): Flow<List<PokemonEntity>> {
+        return queries.getPokemonsByPage(page = page.toLong())
             .asFlow()
             .mapToList(dispatchers.io)
     }

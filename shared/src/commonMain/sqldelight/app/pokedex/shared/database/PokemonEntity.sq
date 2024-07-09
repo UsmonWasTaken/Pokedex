@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS pokemonEntity (
-  page INTEGER NOT NULL,
-  name TEXT NOT NULL PRIMARY KEY,
-  url TEXT NOT NULL
+  id INTEGER NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  page INTEGER NOT NULL
 );
 
 upsertPokemon:
-INSERT OR REPLACE INTO pokemonEntity(page, name, url)
+INSERT OR REPLACE INTO pokemonEntity(id, name, page)
 VALUES ?;
 
 getPokemonsByPage:

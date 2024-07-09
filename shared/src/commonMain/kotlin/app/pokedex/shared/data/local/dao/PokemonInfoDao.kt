@@ -16,15 +16,15 @@ class PokemonInfoDao(
         queries.upsertPokemon(entity)
     }
 
-    suspend fun updateIsFavorite(name: String, isFavorite: Boolean) = withContext(dispatchers.io) {
-        queries.updateIsFavoriteByName(
-            name = name,
+    suspend fun updateIsFavorite(id: Int, isFavorite: Boolean) = withContext(dispatchers.io) {
+        queries.updateIsFavorite(
+            id = id.toLong(),
             isFavorite = if (isFavorite) 1 else 0
         )
     }
 
-    suspend fun getPokemonByName(name: String): PokemonInfoEntity? = withContext(dispatchers.io) {
-        queries.getPokemonByName(name).executeAsOneOrNull()
+    suspend fun getPokemon(id: Int): PokemonInfoEntity? = withContext(dispatchers.io) {
+        queries.getPokemon(id = id.toLong()).executeAsOneOrNull()
     }
 
     fun getFavoritePokemons(): Flow<List<PokemonInfoEntity>> {
