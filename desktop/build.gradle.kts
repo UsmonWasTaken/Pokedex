@@ -1,5 +1,4 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -11,26 +10,22 @@ group = "app.pokedex"
 version = "1.0.0"
 
 kotlin {
-    jvmToolchain(11)
-
-    jvm {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-        java {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
-        }
-    }
-
+    jvm()
     sourceSets {
+        all {
+            languageSettings {
+                optIn("kotlin.contracts.ExperimentalContracts")
+            }
+        }
+
         val jvmMain by getting {
             dependencies {
-                implementation(project(":shared"))
+                implementation(projects.shared)
                 implementation(compose.desktop.currentOs)
             }
         }
     }
+    jvmToolchain(11)
 }
 
 compose.desktop {

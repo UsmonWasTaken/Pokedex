@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import app.pokedex.shared.ContentView
-import app.pokedex.shared.RootComponent
+import app.pokedex.shared.presentation.root.RootComponent
 import app.pokedex.shared.theme.PokedexTheme
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory

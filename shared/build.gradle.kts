@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
@@ -11,85 +9,82 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(11)
-
-    jvm("desktop") {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-        java {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
-        }
-    }
-
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-        java {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
-        }
-    }
+    jvm()
+    androidTarget()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(compose.runtime)
-                api(compose.foundation)
-                api(compose.material3)
-                api(compose.materialIconsExtended)
-                api(compose.components.resources)
-
-                api(libs.ktor.client.core)
-                api(libs.ktor.client.contentNegotiation)
-                api(libs.ktor.client.resources)
-                api(libs.ktor.client.logging)
-                api(libs.ktor.serialization.json)
-
-                api(libs.sqldelight.coroutines.extensions)
-                api(libs.sqldelight.primitive.adapters)
-
-                api(libs.koin.core)
-                api(libs.koin.test)
-
-                api(libs.kotlinx.coroutines.core)
-                api(libs.kotlinx.serialization.json)
-
-                api(libs.mvikotlin)
-                api(libs.mvikotlin.main)
-                api(libs.mvikotlin.extensions.coroutines)
-
-                api(libs.decompose)
-                api(libs.decompose.extensions.compose)
-                api(libs.essenty.lifecycle)
-                api(libs.qdsfdhvh.imageLoader)
-            }
-
-            compilerOptions {
-                freeCompilerArgs.add("-Xexpect-actual-classes")
-                freeCompilerArgs.add("-opt-in=kotlin.contracts.ExperimentalContracts")
-                freeCompilerArgs.add("-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
-                freeCompilerArgs.add("-opt-in=androidx.compose.material3.ExperimentalMaterial3Api")
+        all {
+            languageSettings {
+                optIn("androidx.paging.ExperimentalPagingApi")
+                optIn("kotlin.contracts.ExperimentalContracts")
+                optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
+                optIn("androidx.compose.material3.ExperimentalMaterial3Api")
+                optIn("androidx.compose.foundation.ExperimentalFoundationApi")
             }
         }
 
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.ktor.client.android)
-                implementation(libs.sqldelight.driver.android)
-                implementation(libs.koin.android)
-            }
+        commonMain.dependencies {
+            api(compose.runtime)
+            api(compose.foundation)
+            api(compose.material3)
+            api(compose.materialIconsExtended)
+            api(compose.components.resources)
+
+            api(libs.ktor.client.core)
+            api(libs.ktor.client.contentNegotiation)
+            api(libs.ktor.client.resources)
+            api(libs.ktor.client.logging)
+            api(libs.ktor.serialization.json)
+
+            api(libs.sqldelight.coroutines.extensions)
+            api(libs.sqldelight.paging3.extensions)
+            api(libs.sqldelight.primitive.adapters)
+
+            api(libs.koin.core)
+            api(libs.koin.test)
+
+            api(libs.kotlinx.coroutines.core)
+            api(libs.kotlinx.serialization.json)
+
+            api(libs.mvikotlin)
+            api(libs.mvikotlin.main)
+            api(libs.mvikotlin.extensions.coroutines)
+
+            api(libs.decompose)
+            api(libs.decompose.extensions.compose)
+            api(libs.essenty.lifecycle)
+            api(libs.qdsfdhvh.imageLoader)
+
+            api(libs.paging.common)
+            api(libs.paging.compose.common)
         }
 
-        val desktopMain by getting {
-            dependencies {
-                implementation(libs.ktor.client.java)
-                implementation(libs.sqldelight.driver.sqlite)
-            }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.android)
+            implementation(libs.sqldelight.driver.android)
+            implementation(libs.koin.android)
+        }
+
+        jvmMain.dependencies {
+            implementation(libs.ktor.client.java)
+            implementation(libs.sqldelight.driver.sqlite)
         }
     }
+
+    jvmToolchain(11)
+}
+
+composeCompiler {
+    // Enable 'strong skipping'
+    // https://medium.com/androiddevelopers/jetpack-compose-strong-skipping-mode-explained-cbdb2aa4b900
+    enableStrongSkippingMode.set(true)
+
+    // Needed for Layout Inspector to be able to see all of the nodes in the component tree:
+    //https://issuetracker.google.com/issues/338842143
+    includeSourceInformation.set(true)
+
+    val configurationFile = rootProject.file("compose-stability.conf")
+    stabilityConfigurationFile.set(configurationFile)
 }
 
 compose {

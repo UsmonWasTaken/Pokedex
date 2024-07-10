@@ -44,18 +44,18 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+    kotlinOptions.jvmTarget = "11"
 }
 
 dependencies {
-    implementation(project(":shared"))
+    implementation(projects.shared)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.splashscreen)
     implementation(libs.koin.android)
+    coreLibraryDesugaring(libs.desugarJdkLibs)
 }

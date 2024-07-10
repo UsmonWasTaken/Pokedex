@@ -19,4 +19,4 @@ class PokedexApplication : Application() {
 }
 
 private val Application.isDebuggableApp: Boolean
-    get() = (applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
+    inline get() = (applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0

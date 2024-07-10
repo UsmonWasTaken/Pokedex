@@ -1,5 +1,6 @@
 package app.pokedex.shared.di
 
+import app.pokedex.shared.data.di.dataModule
 import app.pokedex.shared.data.local.di.databaseModule
 import app.pokedex.shared.data.remote.di.networkModule
 import org.koin.core.context.startKoin
@@ -15,6 +16,7 @@ fun initKoin(
             coroutineDispatcherModule,
             databaseModule,
             networkModule(debuggable),
+            dataModule,
         )
     }
 }

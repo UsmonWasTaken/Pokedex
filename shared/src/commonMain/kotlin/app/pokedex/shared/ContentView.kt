@@ -1,33 +1,40 @@
 package app.pokedex.shared
 
-import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import app.pokedex.shared.RootComponent.Child
-import app.pokedex.shared.comingsoon.ComingSoonScreen
-import app.pokedex.shared.details.DetailsScreen
-import app.pokedex.shared.favorite.FavoriteScreen
-import app.pokedex.shared.main.MainScreen
-import app.pokedex.shared.pokedex.PokedexScreen
-import com.arkivanov.decompose.extensions.compose.stack.Children
-import com.arkivanov.decompose.extensions.compose.stack.animation.slide
-import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.paging.compose.itemKey
+import app.cash.paging.compose.collectAsLazyPagingItems
+import app.pokedex.shared.domain.model.Pokemon
+import app.pokedex.shared.presentation.root.RootComponent
+import app.pokedex.shared.util.items
 
 @Composable
 fun ContentView(component: RootComponent) {
-    Children(
-        stack = component.childStack,
-        animation = stackAnimation(
-            animator = slide(
-                animationSpec = tween(durationMillis = 200)
-            )
-        ),
-    ) {
-        when (val child = it.instance) {
-            is Child.Main -> MainScreen(child.component)
-            is Child.Pokedex -> PokedexScreen(child.component)
-            is Child.Favorite -> FavoriteScreen(child.component)
-            is Child.Details -> DetailsScreen(child.component)
-            is Child.ComingSoon -> ComingSoonScreen(child.component)
+    val pagingItems = component.pokemons.collectAsLazyPagingItems()
+
+    Scaffold {
+        LazyColumn(
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            items(
+                items = pagingItems,
+                key = pagingItems.itemKey(Pokemon::name)
+            ) { pokemon ->
+                Text(
+                    text = pokemon.name,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
         }
     }
 }

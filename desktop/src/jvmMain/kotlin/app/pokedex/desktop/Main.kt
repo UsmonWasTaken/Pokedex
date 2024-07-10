@@ -4,9 +4,9 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import app.pokedex.shared.ContentView
 import app.pokedex.shared.Res
-import app.pokedex.shared.RootComponent
 import app.pokedex.shared.app_name
 import app.pokedex.shared.di.initKoin
+import app.pokedex.shared.presentation.root.RootComponent
 import app.pokedex.shared.theme.PokedexTheme
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
@@ -19,17 +19,15 @@ import javax.swing.SwingUtilities
 fun main(args: Array<String>) {
     initKoin(debuggable = true)
 
-    val rootComponent = invokeOnAwtSync {
+    val rootComponent = invokeAndWait {
+        @Suppress("DEPRECATION")
         setMainThreadId(Thread.currentThread().id)
 
         val lifecycle = LifecycleRegistry()
-
         RootComponent(
-            componentContext = DefaultComponentContext(lifecycle = lifecycle),
+            componentContext = DefaultComponentContext(lifecycle),
             storeFactory = DefaultStoreFactory(),
-        ).also {
-            lifecycle.resume()
-        }
+        ).also { lifecycle.resume() }
     }
 
     application {
@@ -44,11 +42,8 @@ fun main(args: Array<String>) {
     }
 }
 
-fun <T> invokeOnAwtSync(block: () -> T): T {
-    var result: T? = null
-    SwingUtilities.invokeAndWait {
-        result = block()
-    }
-    @Suppress("UNCHECKED_CAST")
-    return result as T
+fun <T : Any> invokeAndWait(block: () -> T): T {
+    var value: T? = null
+    SwingUtilities.invokeAndWait { value = block() }
+    return requireNotNull(value)
 }

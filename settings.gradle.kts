@@ -8,6 +8,7 @@ pluginManagement {
             }
         }
         mavenCentral()
+        google()
         gradlePluginPortal()
     }
 }
@@ -21,6 +22,7 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("com.google")
             }
         }
+        google()
         mavenCentral()
     }
 }
