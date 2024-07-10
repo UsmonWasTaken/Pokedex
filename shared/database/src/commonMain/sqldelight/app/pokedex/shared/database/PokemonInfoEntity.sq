@@ -1,0 +1,34 @@
+import app.pokedex.shared.domain.model.PokemonInfo;
+import kotlin.collections.List;
+import kotlin.Boolean;
+import kotlin.Int;
+
+CREATE TABLE IF NOT EXISTS pokemonInfoEntity (
+  id INTEGER AS Int NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  height INTEGER AS Int NOT NULL,
+  weight INTEGER AS Int NOT NULL,
+  experience INTEGER AS Int NOT NULL,
+  types TEXT AS List<PokemonInfo.Type> NOT NULL,
+  stats TEXT AS List<PokemonInfo.Stat> NOT NULL,
+  isFavorite INTEGER AS Boolean NOT NULL DEFAULT 0
+);
+
+upsertPokemon:
+INSERT OR REPLACE INTO pokemonInfoEntity(id, name, height, weight, experience, types, stats, isFavorite)
+VALUES ?;
+
+updateIsFavorite:
+UPDATE pokemonInfoEntity
+SET isFavorite = :isFavorite
+WHERE id = :id;
+
+getFavoritePokemons:
+SELECT *
+FROM pokemonInfoEntity
+WHERE isFavorite == 1;
+
+getPokemon:
+SELECT *
+FROM pokemonInfoEntity
+WHERE id = :id;

@@ -2,7 +2,7 @@ package app.pokedex.shared.domain.repository
 
 import app.cash.paging.PagingData
 import app.pokedex.shared.common.either.Either
-import app.pokedex.shared.domain.error.GetPokemonInfoError
+import app.pokedex.shared.domain.error.PokedexException
 import app.pokedex.shared.domain.model.Pokemon
 import app.pokedex.shared.domain.model.PokemonInfo
 import kotlinx.coroutines.flow.Flow
@@ -16,9 +16,9 @@ interface PokemonRepository {
      * Fetches Pokemon information for the given [id].
      *
      * @param id The ID of the Pokemon to fetch.
-     * @return Either a [PokemonInfo] object containing the Pokemon's information, or a [GetPokemonInfoError] object if an error occurs.
+     * @return Either a [PokemonInfo] object containing the Pokemon's information, or a [PokedexException] object if an error occurs.
      */
-    suspend fun getPokemonInfo(id: Int): Either<PokemonInfo, GetPokemonInfoError>
+    suspend fun getPokemonInfo(id: Int): Either<PokemonInfo, PokedexException>
 
 
     /**

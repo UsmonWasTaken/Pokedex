@@ -40,11 +40,9 @@ android {
         debug {
             isMinifyEnabled = false
         }
-
     }
 
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -53,9 +51,9 @@ android {
 }
 
 dependencies {
-    implementation(projects.shared)
+    implementation(projects.shared.ui)
+    implementation(projects.shared.data)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.splashscreen)
     implementation(libs.koin.android)
-    coreLibraryDesugaring(libs.desugarJdkLibs)
 }

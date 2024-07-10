@@ -34,4 +34,7 @@ include(":desktop")
 
 include(":shared:domain")
 include(":shared:common")
-include(":shared")
+include(":shared:database")
+include(":shared:network")
+include(":shared:data")
+include(":shared:ui")

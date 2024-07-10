@@ -2,7 +2,7 @@ package app.pokedex.android
 
 import android.app.Application
 import android.content.pm.ApplicationInfo
-import app.pokedex.shared.di.initKoin
+import app.pokedex.shared.data.di.initKoin
 import org.koin.android.ext.koin.androidContext
 
 class PokedexApplication : Application() {

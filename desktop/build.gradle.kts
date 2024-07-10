@@ -20,7 +20,8 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
-                implementation(projects.shared)
+                implementation(projects.shared.ui)
+                implementation(projects.shared.data)
                 implementation(compose.desktop.currentOs)
             }
         }

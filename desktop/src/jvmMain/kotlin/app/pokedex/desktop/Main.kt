@@ -2,12 +2,12 @@ package app.pokedex.desktop
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import app.pokedex.shared.ContentView
-import app.pokedex.shared.Res
-import app.pokedex.shared.app_name
-import app.pokedex.shared.di.initKoin
-import app.pokedex.shared.presentation.root.RootComponent
-import app.pokedex.shared.theme.PokedexTheme
+import app.pokedex.shared.data.di.initKoin
+import app.pokedex.shared.ui.ContentView
+import app.pokedex.shared.ui.Res
+import app.pokedex.shared.ui.app_name
+import app.pokedex.shared.ui.root.RootComponent
+import app.pokedex.shared.ui.theme.PokedexTheme
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.resume
