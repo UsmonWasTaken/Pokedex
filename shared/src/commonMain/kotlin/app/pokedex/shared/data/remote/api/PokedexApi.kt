@@ -4,9 +4,9 @@ import app.pokedex.shared.data.remote.request.PokemonInfoRequest
 import app.pokedex.shared.data.remote.request.PokemonRequest
 import app.pokedex.shared.data.remote.response.PokemonInfoResponse
 import app.pokedex.shared.data.remote.response.PokemonsResponse
-import app.pokedex.shared.util.Either
+import app.pokedex.shared.domain.common.Either
 import app.pokedex.shared.util.PokedexDispatchers
-import app.pokedex.shared.util.catch
+import app.pokedex.shared.domain.common.catch
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.resources.get

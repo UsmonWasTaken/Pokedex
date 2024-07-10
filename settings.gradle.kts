@@ -31,4 +31,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "Pokedex"
 include(":android")
 include(":desktop")
+
+include(":shared:domain")
+include(":shared:common")
 include(":shared")

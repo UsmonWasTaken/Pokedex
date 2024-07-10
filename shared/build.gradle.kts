@@ -24,6 +24,9 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(projects.shared.domain)
+            implementation(projects.shared.common)
+
             api(compose.runtime)
             api(compose.foundation)
             api(compose.material3)

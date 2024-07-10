@@ -13,12 +13,14 @@ import app.pokedex.shared.data.mediator.PokemonRemoteMediator
 import app.pokedex.shared.data.remote.api.PokedexApi
 import app.pokedex.shared.data.remote.mapper.PokemonInfoResponseMapper
 import app.pokedex.shared.database.PokemonEntity
+import app.pokedex.shared.domain.common.Either
+import app.pokedex.shared.domain.common.asSuccess
+import app.pokedex.shared.domain.common.flatMap
+import app.pokedex.shared.domain.common.mapFailure
+import app.pokedex.shared.domain.error.GetPokemonInfoError
 import app.pokedex.shared.domain.model.Pokemon
 import app.pokedex.shared.domain.model.PokemonInfo
 import app.pokedex.shared.domain.repository.PokemonRepository
-import app.pokedex.shared.util.Either
-import app.pokedex.shared.util.asSuccess
-import app.pokedex.shared.util.flatMap
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -42,7 +44,7 @@ internal class DefaultPokemonRepository(
         pagingSourceFactory = { pokemonDao.getPokemons() }
     )
 
-    override suspend fun getPokemonInfo(id: Int): Either<PokemonInfo, Throwable> {
+    override suspend fun getPokemonInfo(id: Int): Either<PokemonInfo, GetPokemonInfoError> {
         pokemonInfoDao.getPokemon(id)?.let { entity ->
             return pokemonInfoEntityMapper.toDomain(entity).asSuccess()
         }
@@ -50,7 +52,7 @@ internal class DefaultPokemonRepository(
             val entity = pokemonInfoResponseMapper.toEntity(response)
             pokemonInfoDao.upsertPokemon(entity)
             pokemonInfoEntityMapper.toDomain(entity).asSuccess()
-        }
+        }.mapFailure { TODO("Not yet implemented") }
     }
 
     override fun getPokemons(): Flow<PagingData<Pokemon>> = pager

@@ -8,7 +8,7 @@ import app.pokedex.shared.data.local.dao.PokemonDao
 import app.pokedex.shared.data.remote.api.PokedexApi
 import app.pokedex.shared.data.remote.mapper.PokemonResponseMapper
 import app.pokedex.shared.database.PokemonEntity
-import app.pokedex.shared.util.fold
+import app.pokedex.shared.domain.common.fold
 
 @OptIn(ExperimentalPagingApi::class)
 internal class PokemonRemoteMediator(

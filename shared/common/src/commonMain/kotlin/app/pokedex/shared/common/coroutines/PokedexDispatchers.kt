@@ -1,4 +1,4 @@
-package app.pokedex.shared.util
+package app.pokedex.shared.common.coroutines
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

@@ -2,6 +2,19 @@ package app.pokedex.shared.domain.model
 
 import kotlinx.serialization.Serializable
 
+/**
+ * Data class representing a Pokémon's information.
+ *
+ * @property name The name of the Pokémon.
+ * @property number The national Pokédex number of the Pokémon.
+ * @property imageUrl The URL of the Pokémon's official artwork.
+ * @property height The height of the Pokémon in decimetres.
+ * @property weight The weight of the Pokémon in hectograms.
+ * @property experience The base experience gained for defeating the Pokémon.
+ * @property types The list of types the Pokémon has.
+ * @property stats The list of the Pokémon's stats.
+ * @property isFavorite Whether the Pokémon is marked as a favorite.
+ */
 data class PokemonInfo(
     val name: String,
     val number: String,
@@ -10,17 +23,31 @@ data class PokemonInfo(
     val weight: Int,
     val experience: Int,
     val types: List<Type>,
-    val stats: List<Stats>,
+    val stats: List<Stat>,
     val isFavorite: Boolean,
 ) {
+    /**
+     * Represents a type in a protocol buffer message.
+     *
+     * @property slot The index of the field in the message.
+     * @property name The name of the field.
+     */
     @Serializable
     data class Type(
         val slot: Int,
         val name: String,
     )
 
+    /**
+     * Represents a stat of a Pokemon.
+     *
+     * @property value The current value of the stat.
+     * @property maxValue The maximum value of the stat.
+     * @property name The name of the stat.
+     * @property shortName The short name of the stat.
+     */
     @Serializable
-    data class Stats(
+    data class Stat(
         val value: Int,
         val name: String
     ) {
