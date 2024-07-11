@@ -10,8 +10,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.common)
-
+            api(projects.shared.common)
             api(libs.paging.common)
             api(libs.kotlinx.serialization.json)
         }

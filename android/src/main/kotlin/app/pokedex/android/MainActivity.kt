@@ -6,10 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import app.pokedex.shared.ui.ContentView
-import app.pokedex.shared.ui.root.RootComponent
 import app.pokedex.shared.ui.theme.PokedexTheme
-import com.arkivanov.decompose.defaultComponentContext
-import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import org.koin.core.context.stopKoin
 
 class MainActivity : ComponentActivity() {
@@ -17,14 +14,9 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        val rootComponent = RootComponent(
-            componentContext = defaultComponentContext(),
-            storeFactory = DefaultStoreFactory(),
-        )
         setContent {
             PokedexTheme {
-                ContentView(component = rootComponent)
+                ContentView()
             }
         }
     }

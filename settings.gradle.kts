@@ -8,10 +8,20 @@ pluginManagement {
             }
         }
         mavenCentral()
-        google()
         gradlePluginPortal()
     }
 }
+
+//plugins {
+//    id("com.gradle.develocity") version "3.17.5"
+//}
+//
+//develocity {
+//    buildScan {
+//        termsOfUseUrl = "https://gradle.com/terms-of-service"
+//        termsOfUseAgree = "yes"
+//    }
+//}
 
 dependencyResolutionManagement {
     repositories {
@@ -22,7 +32,6 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("com.google")
             }
         }
-        google()
         mavenCentral()
     }
 }

@@ -23,6 +23,7 @@ kotlin {
                 implementation(projects.shared.ui)
                 implementation(projects.shared.data)
                 implementation(compose.desktop.currentOs)
+                implementation(libs.koin.core)
             }
         }
     }

@@ -1,7 +1,7 @@
 package app.pokedex.shared.domain.model
 
 data class Video(
-    val id: String,
+    val id: Long,
     val title: String,
     val imageUrl: String,
     val year: Int,
@@ -11,7 +11,7 @@ data class Video(
     companion object {
         val demoVideos = listOf(
             Video(
-                id = "01",
+                id = 1,
                 title = "Pokemon Master Journeys: The Series",
                 imageUrl = "https://orgoglionerd.it/wp-content/uploads/2022/05/Esplorazioni-Pokemon-Super-nuova-serie-tv-trailer.jpg",
                 year = 2021,
@@ -19,7 +19,7 @@ data class Video(
                 details = "10 EP",
             ),
             Video(
-                id = "02",
+                id = 2,
                 title = "Pokémon: Mewtwo Strikes Back—Evolution",
                 imageUrl = "https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/movies/movie22/movie22_ss01.jpg",
                 year = 2020,
@@ -27,7 +27,7 @@ data class Video(
                 details = "12 EP",
             ),
             Video(
-                id = "03",
+                id = 3,
                 title = "Pokémon the Movie: The Power of Us",
                 imageUrl = "https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/movies/movie21/movie21_ss01.jpg",
                 year = 2018,
@@ -35,7 +35,7 @@ data class Video(
                 details = "1h 52m",
             ),
             Video(
-                id = "04",
+                id = 4,
                 title = "Pokémon the Movie: Hoopa and the Clash of Ages",
                 imageUrl = "https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/movies/movie18/movie18_ss03.jpg",
                 year = 2015,
@@ -43,7 +43,7 @@ data class Video(
                 details = "1h 46m",
             ),
             Video(
-                id = "05",
+                id = 5,
                 title = "Pokémon—Zoroark: Master of Illusions",
                 imageUrl = "https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/movies/movie13/movie13_ss01.jpg",
                 year = 2011,

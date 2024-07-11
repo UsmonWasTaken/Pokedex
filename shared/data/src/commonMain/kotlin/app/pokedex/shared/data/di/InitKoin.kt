@@ -11,12 +11,12 @@ fun initKoin(
     declaration: KoinAppDeclaration? = null,
 ) {
     startKoin {
-        declaration?.invoke(this)
         modules(
             CoroutineDispatcherModule,
             DatabaseModule,
             NetworkModule(debuggable),
             DataModule,
         )
+        declaration?.invoke(this)
     }
 }

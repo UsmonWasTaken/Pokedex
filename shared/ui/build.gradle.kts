@@ -27,20 +27,21 @@ kotlin {
             api(compose.components.resources)
 
             implementation(libs.koin.core)
+            implementation(libs.koin.compose)
             implementation(projects.shared.domain)
             implementation(projects.shared.common)
 
-            api(libs.mvikotlin)
-            api(libs.mvikotlin.main)
-            implementation(libs.mvikotlin.extensions.coroutines)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.koin)
+            implementation(libs.voyager.transitions)
 
-            api(libs.decompose)
-            implementation(libs.decompose.extensions.compose)
-            api(libs.essenty.lifecycle)
-            implementation(libs.qdsfdhvh.imageLoader)
+            implementation(libs.androidx.lifecycle.viewmodel)
 
-            implementation(libs.paging.common)
             implementation(libs.paging.compose.common)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.koin.androidx.compose)
         }
     }
 

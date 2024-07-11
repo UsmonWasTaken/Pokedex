@@ -25,7 +25,6 @@ kotlin {
             implementation(projects.shared.network)
 
             implementation(libs.koin.core)
-            implementation(libs.koin.test)
 
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.contentNegotiation)

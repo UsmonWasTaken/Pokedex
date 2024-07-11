@@ -1,40 +1,15 @@
 package app.pokedex.shared.ui
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.paging.compose.itemKey
-import app.cash.paging.compose.collectAsLazyPagingItems
-import app.pokedex.shared.domain.model.Pokemon
-import app.pokedex.shared.ui.root.RootComponent
-import app.pokedex.shared.ui.util.items
+import app.pokedex.shared.ui.home.api.HomeScreenFactory
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
+import org.koin.compose.koinInject
 
 @Composable
-fun ContentView(component: RootComponent) {
-    val pagingItems = component.pokemons.collectAsLazyPagingItems()
-
-    Scaffold {
-        LazyColumn(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            items(
-                items = pagingItems,
-                key = pagingItems.itemKey(Pokemon::name)
-            ) { pokemon ->
-                Text(
-                    text = pokemon.name,
-                    modifier = Modifier.padding(16.dp)
-                )
-            }
-        }
+fun ContentView() {
+    val homeScreenFactory = koinInject<HomeScreenFactory>()
+    Navigator(screen = homeScreenFactory.create()) { navigator ->
+        SlideTransition(navigator)
     }
 }
