@@ -17,6 +17,7 @@ kotlin {
                 optIn("androidx.compose.material3.ExperimentalMaterial3Api")
                 optIn("androidx.compose.foundation.ExperimentalFoundationApi")
                 optIn("coil3.annotation.ExperimentalCoilApi")
+                optIn("cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi")
             }
         }
 
