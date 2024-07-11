@@ -16,6 +16,7 @@ kotlin {
                 optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
                 optIn("androidx.compose.material3.ExperimentalMaterial3Api")
                 optIn("androidx.compose.foundation.ExperimentalFoundationApi")
+                optIn("coil3.annotation.ExperimentalCoilApi")
             }
         }
 
@@ -36,12 +37,23 @@ kotlin {
             implementation(libs.voyager.transitions)
 
             implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.kotlinx.coroutines.core)
 
             implementation(libs.paging.compose.common)
+
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.mp)
+            implementation(libs.coil.network.ktor)
         }
 
         androidMain.dependencies {
             implementation(libs.koin.androidx.compose)
+            implementation(libs.kotlinx.coroutines.android)
+        }
+
+        jvmMain.dependencies {
+            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 

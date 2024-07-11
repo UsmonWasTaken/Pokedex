@@ -13,6 +13,7 @@ koin = "3.5.6"
 koin-compose = "1.1.5"
 voyager = "1.1.0-beta02"
 paging = "3.3.0-alpha02-0.5.1"
+coil3 = "3.0.0-alpha08"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
@@ -20,6 +21,8 @@ androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.re
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-java = { module = "io.ktor:ktor-client-java", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
@@ -41,6 +44,10 @@ sqldelight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", versi
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
+coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
