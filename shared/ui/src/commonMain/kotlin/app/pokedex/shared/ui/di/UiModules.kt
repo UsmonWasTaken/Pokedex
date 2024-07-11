@@ -2,6 +2,7 @@ package app.pokedex.shared.ui.di
 
 import app.pokedex.shared.ui.home.impl.di.HomeModule
 import app.pokedex.shared.ui.notimplemented.impl.di.NotImplementedModule
+import app.pokedex.shared.ui.pokemon_details.impl.di.PokemonDetailsModule
 import app.pokedex.shared.ui.pokemons.impl.di.PokemonsModule
 import org.koin.core.KoinApplication
 
@@ -14,6 +15,7 @@ fun KoinApplication.uiModules() {
     modules(
         HomeModule,
         PokemonsModule,
+        PokemonDetailsModule,
         NotImplementedModule,
     )
 }

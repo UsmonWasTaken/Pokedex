@@ -1,9 +1,12 @@
-package app.pokedex.shared.ui.home.impl.component
+package app.pokedex.shared.ui.common.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -11,15 +14,18 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import app.pokedex.shared.ui.Res
+import app.pokedex.shared.ui.cd_clear_search_query
 import app.pokedex.shared.ui.search_placeholder
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun HomeSearchField(
+internal fun SearchField(
     query: String,
     onQueryChange: (String) -> Unit,
-    modifier: Modifier = Modifier
+    onClearSearch: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         value = query,
@@ -27,8 +33,21 @@ internal fun HomeSearchField(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Rounded.Search,
-                contentDescription = null
+                contentDescription = null,
             )
+        },
+        trailingIcon = {
+            if (query.isNotEmpty()) {
+                IconButton(
+                    onClick = onClearSearch,
+                    modifier = Modifier.padding(end = 8.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Close,
+                        contentDescription = stringResource(Res.string.cd_clear_search_query),
+                    )
+                }
+            }
         },
         placeholder = {
             Text(text = stringResource(Res.string.search_placeholder))

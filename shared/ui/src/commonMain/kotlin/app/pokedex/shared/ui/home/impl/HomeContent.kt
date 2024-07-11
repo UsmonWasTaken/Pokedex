@@ -21,9 +21,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.pokedex.shared.domain.model.Video
 import app.pokedex.shared.ui.Res
+import app.pokedex.shared.ui.common.component.SearchField
 import app.pokedex.shared.ui.home.impl.HomeScreen.Intent
 import app.pokedex.shared.ui.home.impl.component.HomeFeaturesSection
-import app.pokedex.shared.ui.home.impl.component.HomeSearchField
 import app.pokedex.shared.ui.home.impl.component.HomeTopBar
 import app.pokedex.shared.ui.home.impl.component.HomeVideosSection
 import app.pokedex.shared.ui.home_welcome_text
@@ -54,9 +54,10 @@ internal fun HomeContent(
 
             // Search isn't implemented yet, just to fit the aesthetics.
             var searchQuery by rememberSaveable { mutableStateOf("") }
-            HomeSearchField(
+            SearchField(
                 query = searchQuery,
                 onQueryChange = { searchQuery = it },
+                onClearSearch = { searchQuery = "" },
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 16.dp)
             )
 
