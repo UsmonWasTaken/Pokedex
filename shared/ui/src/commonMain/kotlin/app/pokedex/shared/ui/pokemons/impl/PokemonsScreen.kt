@@ -5,7 +5,10 @@ import app.cash.paging.compose.collectAsLazyPagingItems
 import app.pokedex.shared.domain.model.Pokemon
 import app.pokedex.shared.ui.pokemon_details.api.PokemonDetailsScreenFactory
 import app.pokedex.shared.ui.pokemons.api.PokemonsScreenFactory
+import app.pokedex.shared.ui.util.safePop
+import app.pokedex.shared.ui.util.safePush
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -14,6 +17,8 @@ import org.koin.compose.koinInject
 internal fun PokemonsScreenFactory() = PokemonsScreenFactory(::PokemonsScreen)
 
 internal class PokemonsScreen : Screen {
+
+    override val key: ScreenKey = "PokemonsScreen"
 
     @Composable
     override fun Content() {
@@ -27,9 +32,9 @@ internal class PokemonsScreen : Screen {
             pokemons = pokemons,
             onIntent = { intent ->
                 when (intent) {
-                    Intent.NavigateBack -> navigator.pop()
+                    Intent.NavigateBack -> navigator.safePop()
                     is Intent.NavigateToPokemonDetails -> {
-                        navigator.push(pokemonDetailsScreen.create(pokemon = intent.pokemon))
+                        navigator.safePush(pokemonDetailsScreen.create(pokemon = intent.pokemon))
                     }
                 }
             }

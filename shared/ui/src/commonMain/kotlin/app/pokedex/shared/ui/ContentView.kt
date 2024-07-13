@@ -11,9 +11,9 @@ import org.koin.compose.koinInject
 fun ContentView() {
     SetupCoilImageLoader()
 
-    val homeScreenFactory = koinInject<HomeScreenFactory>()
+    val homeScreen = koinInject<HomeScreenFactory>()
     Navigator(
-        screen = homeScreenFactory.create(),
+        screen = homeScreen.create(),
     ) { navigator ->
         SlideTransition(
             navigator = navigator,

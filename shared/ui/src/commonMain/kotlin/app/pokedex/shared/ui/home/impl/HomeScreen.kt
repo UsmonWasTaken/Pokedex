@@ -5,7 +5,9 @@ import app.pokedex.shared.domain.model.Video
 import app.pokedex.shared.ui.home.api.HomeScreenFactory
 import app.pokedex.shared.ui.notimplemented.api.NotImplementedScreenFactory
 import app.pokedex.shared.ui.pokemons.api.PokemonsScreenFactory
+import app.pokedex.shared.ui.util.safePush
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.koinInject
@@ -14,23 +16,25 @@ internal fun HomeScreenFactory() = HomeScreenFactory(::HomeScreen)
 
 internal class HomeScreen : Screen {
 
+    override val key: ScreenKey = "HomeScreen"
+
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        val pokemonsScreenFactory = koinInject<PokemonsScreenFactory>()
-        val notImplementedScreenFactory = koinInject<NotImplementedScreenFactory>()
+        val pokemonsScreen = koinInject<PokemonsScreenFactory>()
+        val notImplementedScreen = koinInject<NotImplementedScreenFactory>()
 
         HomeContent(
             onIntent = { intent ->
                 when (intent) {
-                    Intent.NavigateToPokemons -> navigator.push(pokemonsScreenFactory.create())
+                    Intent.NavigateToPokemons -> navigator.safePush(pokemonsScreen.create())
                     Intent.NavigateToFavorites,
                     Intent.NavigateToAbout,
                     Intent.NavigateToSearch,
                     Intent.NavigateToEvolution,
                     Intent.NavigateToLocations,
                     Intent.NavigateToMoves,
-                    is Intent.PlayVideo -> navigator.push(notImplementedScreenFactory.create())
+                    is Intent.PlayVideo, -> navigator.safePush(notImplementedScreen.create())
                 }
             },
         )

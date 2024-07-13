@@ -45,6 +45,8 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.mp)
             implementation(libs.coil.network.ktor)
+
+            compilerOptions.freeCompilerArgs.add("-Xcontext-receivers")
         }
 
         androidMain.dependencies {
