@@ -16,6 +16,7 @@ import kotlinx.serialization.Serializable
  * @property isFavorite Whether the Pokémon is marked as a favorite.
  */
 data class PokemonInfo(
+    val id: Int,
     val name: String,
     val number: String,
     val imageUrl: String,

@@ -9,6 +9,7 @@ package app.pokedex.shared.domain.model
  * @property imageUrl The URL of the Pokemon's image.
  */
 data class Pokemon(
+    val id: Int,
     val page: Int,
     val name: String,
     val number: String,

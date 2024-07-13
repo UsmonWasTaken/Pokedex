@@ -18,30 +18,30 @@ data class PokemonInfoResponse(
     @Serializable
     data class TypeResponse(
         val slot: Int,
-        val type: TypeInfo
+        val type: TypeInfo,
     ) {
         val name: String
             inline get() = type.name
 
-        @JvmInline
+
         @Serializable
-        value class TypeInfo(
-            val name: String
+        data class TypeInfo(
+            val name: String,
         )
     }
 
     @Serializable
     data class StatsResponse(
         @SerialName("base_stat") val baseStat: Int,
-        val stat: StatInfo
+        val stat: StatInfo,
     ) {
         val name: String
             inline get() = stat.name
 
-        @JvmInline
+
         @Serializable
-        value class StatInfo(
-            val name: String
+        data class StatInfo(
+            val name: String,
         )
     }
 }
