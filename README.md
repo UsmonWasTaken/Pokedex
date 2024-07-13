@@ -53,6 +53,8 @@ feature modules if needed.
 
 ## Screenshots
 
+### Android
+
 <div align="center">
   <img style="float: left; margin-right: 15px;" src="https://github.com/user-attachments/assets/41c67f54-a591-41f2-ba4e-493e6db4cd60" alt="Home Screen (Light mode)" width="45%">
   <img style="float: left; margin-left: 15px;" src="https://github.com/user-attachments/assets/1c84b5f3-bf75-4d2f-b944-700ab5a71d08" alt="Home Screen (Dark mode)" width="45%">
