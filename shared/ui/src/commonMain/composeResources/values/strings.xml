@@ -12,4 +12,8 @@
     <string name="evolutions">Evolutions</string>
     <string name="locations">Locations</string>
     <string name="watch">Watch</string>
+    <string name="cd_favorite">Add to favorites</string>
+    <string name="cd_unfavorite">Remove from favorites</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
 </resources>
