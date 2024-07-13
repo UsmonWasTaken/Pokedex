@@ -1,7 +1,6 @@
 package app.pokedex.shared.ui.common.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
@@ -14,7 +13,6 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import app.pokedex.shared.ui.Res
 import app.pokedex.shared.ui.cd_clear_search_query
 import app.pokedex.shared.ui.search_placeholder
@@ -38,10 +36,7 @@ internal fun SearchField(
         },
         trailingIcon = {
             if (query.isNotEmpty()) {
-                IconButton(
-                    onClick = onClearSearch,
-                    modifier = Modifier.padding(end = 8.dp)
-                ) {
+                IconButton(onClick = onClearSearch) {
                     Icon(
                         imageVector = Icons.Rounded.Close,
                         contentDescription = stringResource(Res.string.cd_clear_search_query),

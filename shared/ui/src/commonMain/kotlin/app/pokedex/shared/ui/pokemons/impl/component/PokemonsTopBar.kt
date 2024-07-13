@@ -1,6 +1,5 @@
 package app.pokedex.shared.ui.pokemons.impl.component
 
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,13 +43,12 @@ internal fun PokemonsTopBar(
         title = {
             // Search isn't implemented yet, just to fit the aesthetics.
             var searchQuery by rememberSaveable { mutableStateOf("") }
-            Row(modifier = Modifier.padding(end = 10.dp)) {
-                SearchField(
-                    query = searchQuery,
-                    onQueryChange = { searchQuery = it },
-                    onClearSearch = { searchQuery = "" },
-                )
-            }
+            SearchField(
+                query = searchQuery,
+                onQueryChange = { searchQuery = it },
+                onClearSearch = { searchQuery = "" },
+                modifier = Modifier.padding(end = 10.dp)
+            )
         },
         colors = TopAppBarDefaults.largeTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.background

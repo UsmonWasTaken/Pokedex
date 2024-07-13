@@ -34,12 +34,11 @@ kotlin {
             implementation(projects.shared.common)
 
             implementation(libs.voyager.navigator)
+            implementation(libs.voyager.screenModel)
             implementation(libs.voyager.koin)
             implementation(libs.voyager.transitions)
 
-            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.kotlinx.coroutines.core)
-
             implementation(libs.paging.compose.common)
 
             implementation(libs.coil.compose.core)
@@ -49,7 +48,6 @@ kotlin {
         }
 
         androidMain.dependencies {
-            implementation(libs.koin.androidx.compose)
             implementation(libs.kotlinx.coroutines.android)
         }
 
