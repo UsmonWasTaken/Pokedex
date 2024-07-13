@@ -1,0 +1,20 @@
+import kotlin.Int;
+
+CREATE TABLE IF NOT EXISTS pokemonRemoteKeyEntity (
+  id INTEGER AS Int NOT NULL PRIMARY KEY,
+  previousPage  INTEGER AS Int,
+  nextPage INTEGER AS Int
+);
+
+upsertRemoteKey:
+INSERT OR REPLACE INTO pokemonRemoteKeyEntity(id, previousPage, nextPage)
+VALUES ?;
+
+clearRemoteKeys:
+DELETE
+FROM pokemonRemoteKeyEntity;
+
+getRemoteKey:
+SELECT *
+FROM pokemonRemoteKeyEntity
+WHERE id = :id;

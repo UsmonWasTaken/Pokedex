@@ -9,7 +9,6 @@ class PokemonEntityMapper {
         val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${entity.id}.png"
         return Pokemon(
             id = entity.id,
-            page = entity.page,
             name = entity.name,
             number = String.format("#%03d", entity.id),
             imageUrl = imageUrl,

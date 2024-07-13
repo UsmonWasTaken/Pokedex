@@ -26,7 +26,7 @@ class PokedexApi(
     suspend fun fetchPokemons(page: Int, pageSize: Int): Either<PokemonsResponse, PokedexException>{
         val request = PokemonRequest(
             limit = pageSize,
-            offset = page * pageSize
+            offset = (page - 1) * pageSize
         )
         return withContext(dispatchers.io) {
             safeApiCall { client.get(request) }

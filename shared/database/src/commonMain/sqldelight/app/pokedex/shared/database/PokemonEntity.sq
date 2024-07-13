@@ -2,15 +2,14 @@ import kotlin.Int;
 
 CREATE TABLE IF NOT EXISTS pokemonEntity (
   id INTEGER AS Int NOT NULL PRIMARY KEY,
-  name TEXT NOT NULL,
-  page INTEGER AS Int NOT NULL
+  name TEXT NOT NULL
 );
 
 upsertPokemon:
-INSERT OR REPLACE INTO pokemonEntity(id, name, page)
+INSERT OR REPLACE INTO pokemonEntity(id, name)
 VALUES ?;
 
-clear:
+clearPokemons:
 DELETE
 FROM pokemonEntity;
 
